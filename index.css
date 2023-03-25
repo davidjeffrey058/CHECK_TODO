@@ -1,0 +1,143 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color:#E1D9CC;
+    width: 100%;
+    height: 100%;
+}
+/*image on the side of the login page*/
+.side_image{
+    width: 600px;
+    height: 550px;
+}
+/*reg form*/
+.user_details{
+    padding-left: 300px;
+    font-size: large;
+}
+/*input forms*/
+.input{
+    background-color: transparent;
+    border-top: 0in;
+    border-left: 0in;
+    border-right: 0in;
+    border-color: #467A88;
+    border-bottom: 10 cm;
+    height: 1.0cm;
+    width: 10cm;
+    /*outline function removes the border that appears 
+    around the text area when the use has focus on it*/
+    outline: none;
+}
+.head{
+    color: #D1A76B;
+    align-self: center;
+    margin-left: 50px;    
+}
+.CREATE{
+    position: relative;
+    background-color:#467A88;
+    border-radius: 0%;
+    border: 0%;
+    border-color: transparent;
+    border-radius: 40px; 
+    width: 180px;
+    height: 43.01px;  
+    align-self: center;  
+    text-decoration: solid;
+    font-size: 15px;
+    font-weight: bold;
+    color: #D1A76B;
+    margin-left: 15px;
+
+}
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px 100px;
+}
+.frorm_header{
+    color:#467A88;
+    font-size: 30px;
+    padding-left: 120px;
+    margin: 1rem 0;
+}
+.head_inner{
+    font-size: 50px;
+    color: #D1A76B;
+    align-self: center;
+    margin-left: 40px;      
+}
+/*login button*/
+.LOGIN_BTN{
+    position: relative;
+    background-color:#467A88;
+    border-radius: 0%;
+    border: 0%;
+    border-color: transparent;
+    border-radius: 40px; 
+    width: 180px;
+    height: 43.01px;  
+    align-self: center;  
+    text-decoration: solid;
+    font-size: 15px;
+    font-weight: bold;
+    color: #D1A76B;
+    margin-left: 5px;
+}
+/*text to point to login button to rount to the login form */
+.login_statment{
+    color:#467A88;
+    font-size: 20px;
+    padding-left: 30px;
+    margin: 1rem 0;
+}
+/*The last text above the login form ,above the text "TO CHECK-TODO" text="WELCOME BACK "*/
+.head_inner_LOGIN{
+    font-size: 50px;
+    color: #D1A76B;
+    align-self: center;
+    margin-left: 40px;  
+}
+/*text above the login form ,above the text "LOGIN"  text = "TO CHECK-TODO"*/
+.head_LOGIN{
+    color: #D1A76B;
+    align-self: center;
+    margin-left: 50px; 
+}
+/*header for the login form the text = LOGIN*/
+.frorm_header_LOGIN{
+    color:#467A88;
+    font-size: 30px;
+    padding-left: 120px;
+    margin: 1rem 0;
+}
+/*form for log in */
+.user_logins{
+    margin-bottom: 280px;
+    max-height: 50%;
+}
+/*button to actually log you into the site */
+.LOGIN_BTN_final{
+    position: relative;
+    background-color:#467A88;
+    border-radius: 0%;
+    border: 0%;
+    border-color: transparent;
+    border-radius: 40px; 
+    width: 180px;
+    height: 43.01px;  
+    align-self: center;  
+    text-decoration: solid;
+    font-size: 15px;
+    font-weight: bold;
+    color: #D1A76B;
+    margin-left: 80px;
+}
