@@ -1,0 +1,26 @@
+body{
+    margin: 0px;
+}
+.nav_container{
+    background-color: black;
+}
+.the_list li{
+    color: white;
+    padding: 10px;
+}
+.the_list li:hover{
+    background-color: grey;
+}
+.the_list{
+    display: flex;
+}
+.home_section{
+    color: red;
+    font-size: 30px;
+}
+.profile_section{
+    color: blue;
+}
+.settings_section{
+    color: green;
+}

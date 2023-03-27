@@ -2,7 +2,7 @@
 function homeMethod(e){
     e.preventDefault();
     const home = `
-    <div>This is the home page</div>
+    <div class="home_section">This is the home page</div>
 `;
 const theBody = document.querySelector('.the_body');
     theBody.innerHTML = home;
@@ -11,7 +11,7 @@ const theBody = document.querySelector('.the_body');
 function profileMethod(e){
     e.preventDefault();
     const profile = `
-    <div>This is the profile page</div>
+    <div class="profile_section">This is the profile page</div>
 `;
 const theBody = document.querySelector('.the_body');
     theBody.innerHTML = profile;
@@ -20,7 +20,7 @@ const theBody = document.querySelector('.the_body');
 function settingsMethod(e){
     e.preventDefault();
     const settings = `
-    <div>This is the settings page</div>
+    <div class="settings_section">This is the settings page</div>
 `;
 const theBody = document.querySelector('.the_body');
     theBody.innerHTML = settings;
