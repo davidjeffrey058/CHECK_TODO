@@ -1,7 +1,7 @@
 //listen for authentication state change
 auth.onAuthStateChanged(user => {
   if (user != null) {
-    window.location.href = './main_page.html'
+    window.location.href = './nav.html'
   }
 });
 
@@ -15,8 +15,13 @@ signupForm.addEventListener('submit', (e) => {
   const email = signupForm['signupEmail'].value;
   const password = signupForm['signupPassword'].value;
 
-  //signup a new user
+  //signup a new user  
   auth.createUserWithEmailAndPassword(email, password).then(Credential => {
+    Credential.user.updateProfile({
+      displayName : fullname
+    }).catch(error => {
+      alert(error.message);
+    });
     signupForm.reset();
     window.location.href = "./main_page.html";
   })
@@ -26,6 +31,15 @@ signupForm.addEventListener('submit', (e) => {
       alert(errorMessage);
       console.log(error);
     });
+
+    // auth.currentUser.sendEmailVerification()
+    // .then(() => {
+    //   alert("Email verification sent")
+    // })
+    // .catch((error) => {
+    //   alert(error.message);
+    // });
+  
 });
 
 
