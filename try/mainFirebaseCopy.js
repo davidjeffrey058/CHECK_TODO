@@ -10,6 +10,7 @@ auth.onAuthStateChanged(user => {
     userId = user.uid;
 
     userName.innerHTML = 'Hi ' +  firstName(user.displayName);
+    userName.title = 'Logged in as ' + user.email;
 
     //get all the tasks from the users collection
     db.collection(userEmail).onSnapshot(snapshot => {

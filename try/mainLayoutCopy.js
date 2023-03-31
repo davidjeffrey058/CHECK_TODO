@@ -15,7 +15,9 @@ const setUpTasksLayout = (data, email) => {
     items.forEach(docs => {
         const li = `
         <div class="item_container">
-          <input data-id="${items[i].id}" type="checkbox" class="checkbox ${items[i].status == "completed" ? "checked":""}">
+            <div data-id="${items[i].id}" class="check-mark ${items[i].status == "completed" ? "checked":""}">
+                <img src="images/icon-check.svg">
+            </div>
           <p class="task_name ${items[i].status == "completed" ? "checked":""}">${items[i].text}</p>
         </div>
     `;
@@ -29,8 +31,7 @@ const setUpTasksLayout = (data, email) => {
 
 //Creates an eventListener for every single checkbox
 function createEventListeners(Email){
-    var todoCheckMarks = document.querySelectorAll('.item_container .checkbox');
-    var taskName = document.querySelector('#task_name');
+    var todoCheckMarks = document.querySelectorAll('.item_container .check-mark');
 
     todoCheckMarks.forEach((checkMark) => {
         checkMark.addEventListener("click", function(){
