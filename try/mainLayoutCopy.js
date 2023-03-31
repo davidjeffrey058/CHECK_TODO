@@ -19,6 +19,7 @@ const setUpTasksLayout = (data, email) => {
                 <img src="images/icon-check.svg">
             </div>
           <p class="task_name ${items[i].status == "completed" ? "checked":""}">${items[i].text}</p>
+          <div data-id="${items[i].id}" class="delete-text ${items[i].status == "completed" ? "checked":""}">Delete</div>
         </div>
     `;
         container += li;
@@ -26,7 +27,7 @@ const setUpTasksLayout = (data, email) => {
     });
     document.querySelector('.theContainer').innerHTML = container;
     createEventListeners(email);
-    
+    createEventListenersDelete(email);
 }
 
 //Creates an eventListener for every single checkbox
@@ -36,6 +37,17 @@ function createEventListeners(Email){
     todoCheckMarks.forEach((checkMark) => {
         checkMark.addEventListener("click", function(){
             markCompleted(checkMark.dataset.id, Email);
+        });
+    });
+}
+
+//Creates an eventListener for every single delete
+function createEventListenersDelete(Email){
+    var todoCheckMarks = document.querySelectorAll('.item_container .delete-text');
+
+    todoCheckMarks.forEach((checkMark) => {
+        checkMark.addEventListener("click", function(){
+            deleteTask(checkMark.dataset.id, Email);
         });
     });
 }
@@ -57,4 +69,14 @@ function markCompleted(id, e){
             }
         }
     });
+}
+
+//Function that deletes a task
+function deleteTask(id, e){
+    let item = db.collection(e).doc(id);
+    item.delete().then(()=>{
+        alert("Deleted successfully");
+    }).catch(error => {
+        alert("Error deleting document: ", error);
+    })
 }

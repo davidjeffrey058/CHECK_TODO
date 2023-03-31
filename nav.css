@@ -89,6 +89,7 @@ body {
   padding: 15px 5px;
   border-radius: 5px;
   background-color: var(--darker-grey);
+  /* justify-content: space-between; */
   /* box-shadow: 0px 1px 3px #989595; */
 }
 
@@ -166,4 +167,17 @@ body {
 .check-mark.checked {
   background-color: pink;
   background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+}
+
+.delete-text{
+  margin-left: auto;
+  color: red;
+  font-size: 12px;
+  margin-right: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  visibility: hidden;
+  cursor: pointer;
+}
+.delete-text.checked{
+  visibility: visible;
 }
