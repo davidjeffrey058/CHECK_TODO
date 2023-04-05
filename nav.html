@@ -31,6 +31,7 @@
   </script>
   <script src="Scripts/mainFirebase.js"></script>
   <script src="Scripts/mainLayout.js"></script>
+  <script src="Scripts/motivation.js"></script>
 </head>
 
 <body>
@@ -85,13 +86,17 @@
       </form>
     </div>
 
+    <!-- The Quotes of the day section -->
     <div class="motivation">
       <h3>Quotes of The Day</h3>
-      <hr width="100%" color="grey" size="0.5px">
-      <div>
-        <p class="quote">This is where the quote of the day will be displayed</p>
-        <p class="author">Author: <i>David Jeffrey</i></p>
+      <div class="quote-container">
+        <!-- <p class="quote">This is where the quote of the day will be displayed</p>
+        <p class="author">Author: <i>David Jeffrey</i></p> -->
       </div>
+      <span class="refresh" onclick="getQuote()">
+        <i class="fa-solid fa-rotate-right"></i>
+        Refresh
+      </span>
     </div>
   </div>
 

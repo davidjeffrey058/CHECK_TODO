@@ -65,6 +65,7 @@ body {
   /* box-shadow: 0px 1px 3px #989595; */
   margin: 20px 10px;
   background-color: var(--nav-black);
+  height: min-content;
 }
 
 #profile_image {
@@ -150,4 +151,20 @@ body {
   color: grey;
   margin: 5px;
   text-align: right;
+}
+.refresh{
+  color: white;
+  margin-top: 20px;
+  background-color: var(--darker-grey);
+  width: fit-content;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.refresh:hover{
+  background-color: #504f4f;
 }
