@@ -20,7 +20,7 @@ auth.onAuthStateChanged(user => {
     //document.querySelector('#userEmail').innerHTML = 'Logged in as ' + user.email
   }
   else {
-    window.location.href = './index.html';
+    window.location.href = './authentication.html';
   }
 });
 
@@ -48,7 +48,8 @@ function addItem(e) {
     db.collection(userEmail).add({
       text: taskText['task_input'].value,
       status: 'active',
-      category: taskText['categorySelect'].value
+      category: taskText['categorySelect'].value,
+      important: false
     }).then(() => {
       taskText.reset();
     })

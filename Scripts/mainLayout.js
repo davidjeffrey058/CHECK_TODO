@@ -8,7 +8,7 @@ const setUpTasksLayout = (data, email) => {
             ...element.data()
         });
     });
-    console.log(items);
+    //console.log(items);
 
     let container = '';
     var i = 0;
@@ -19,7 +19,12 @@ const setUpTasksLayout = (data, email) => {
                 <img src="images/icon-check.svg">
             </div>
           <p class="task_name ${items[i].status == "completed" ? "checked":""}">${items[i].text}</p>
-          <div data-id="${items[i].id}" class="delete-text ${items[i].status == "completed" ? "checked":""}">Delete</div>
+          <div class="star-container ${items[i].important == true ? "important" : ""}" data-id="${items[i].id}" title="Mark as important">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div title="Delete task" data-id="${items[i].id}" class="delete-text ${items[i].status == "completed" ? "checked":""}">
+            <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
+          </div>
         </div>
     `;
         container += li;
@@ -28,6 +33,7 @@ const setUpTasksLayout = (data, email) => {
     document.querySelector('.theContainer').innerHTML = container;
     createEventListeners(email);
     createEventListenersDelete(email);
+    createEventListenersImportant(email);
 }
 
 //Creates an eventListener for every single checkbox
@@ -48,6 +54,17 @@ function createEventListenersDelete(Email){
     todoCheckMarks.forEach((checkMark) => {
         checkMark.addEventListener("click", function(){
             deleteTask(checkMark.dataset.id, Email);
+        });
+    });
+}
+
+//Creates an eventListener for every single important
+function createEventListenersImportant(Email){
+    var todoImportant = document.querySelectorAll('.item_container .star-container');
+
+    todoImportant.forEach((important) => {
+        important.addEventListener("click", function(){
+            importantTask(important.dataset.id, Email);
         });
     });
 }
@@ -79,4 +96,23 @@ function deleteTask(id, e){
     }).catch(error => {
         alert("Error deleting document: ", error);
     })
+}
+
+//Function that adds a task to important
+function importantTask(id, e){
+    let item = db.collection(e).doc(id);
+    item.get().then(function(doc){
+        if(doc.exists){
+            let priority = doc.data().important;
+            if(priority == true){
+                item.update({
+                    important: false
+                })
+            }else if(priority == false){
+                item.update({
+                    important: true
+                })
+            }
+        }
+    });
 }

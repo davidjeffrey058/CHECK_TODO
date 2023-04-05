@@ -26,7 +26,7 @@
 		<div class="popup-content">
 			<span class="close" onclick="closePopup()">&times;</span>
 			<h2>Login</h2>
-			<form>
+			<form id="loginForm">
 				<div>
 					<!-- <label for="username">Email</label><br> -->
 					<div class="input-field">
@@ -62,7 +62,7 @@
 		<div class="registerPopup-content">
 			<span class="registerclose" onclick="closeRegisterPopUp()">&times;</span>
 			<h2>Registration</h2>
-			<form>
+			<form id="user_details">
 				<div>
 					<!-- <label for="username">Email</label><br> -->
 					<div class="register-input-field">
@@ -73,14 +73,14 @@
 				<div>
 					<!-- <label for="username">Email</label><br> -->
 					<div class="register-input-field">
-						<input type="email" id="username" name="username" required placeholder="Email">
+						<input type="email" id="signupEmail" name="email" required placeholder="Email">
 						<img width="20px" src="images/icon_images/email.png" alt="image">
 					</div>
 				</div>
 				<div>
 					<!-- <label for="password">Password</label><br> -->
 					<div class="register-input-field">
-						<input type="password" id="password" name="username" required placeholder="Password">
+						<input type="password" id="signupPassword" name="username" required placeholder="Password">
 						<img width="20px" src="images/icon_images/padlock.png" alt="image">
 					</div>
 				</div>

@@ -169,15 +169,26 @@ body {
   background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
 }
 
-.delete-text{
+.star-container{
   margin-left: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.fa-solid{
+  color: #adaeb0;
+}
+.star-container.important .fa-solid{
+  color: yellow;
+}
+.delete-text{
+  /* margin-left: auto; */
   color: red;
   font-size: 12px;
   margin-right: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  visibility: hidden;
+  display: none;
   cursor: pointer;
 }
 .delete-text.checked{
-  visibility: visible;
+  display: block;
 }
