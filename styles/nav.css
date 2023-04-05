@@ -48,7 +48,8 @@ body {
 /* Style for the main content */
 .main {
   margin-left: 200px;
-  /* Same width as the sidebar */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .container_title {
@@ -64,42 +65,6 @@ body {
   /* box-shadow: 0px 1px 3px #989595; */
   margin: 20px 10px;
   background-color: var(--nav-black);
-}
-
-.task_name {
-  margin: 0px;
-  padding-right: 20px;
-  padding-left: 20px;
-  display: inline;
-  font-size: 13px;
-  color: rgb(224, 224, 224);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.task_name.checked {
-  text-decoration: line-through;
-  color: rgb(106, 105, 105);
-}
-
-.item_container {
-  display: flex;
-  width: 300px;
-  max-width: 500px;
-  margin-bottom: 10px;
-  padding: 15px 5px;
-  border-radius: 5px;
-  background-color: var(--darker-grey);
-  /* justify-content: space-between; */
-  /* box-shadow: 0px 1px 3px #989595; */
-}
-
-#task_input {
-  width: 97%;
-  height: 35px;
-  padding-left: 5px;
-  background-color: var(--nav-black);
-  border: 1px solid var(--darker-grey);
-  color: white;
 }
 
 #profile_image {
@@ -126,6 +91,15 @@ body {
   padding-left: 10px;
 }
 
+#task_input {
+  width: 97%;
+  height: 35px;
+  padding-left: 5px;
+  background-color: var(--nav-black);
+  border: 1px solid var(--darker-grey);
+  color: white;
+}
+
 .category_part {
   display: flex;
   margin-top: 10px;
@@ -147,48 +121,18 @@ body {
   border-radius: 10px;
 }
 
-.check-mark {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid hsl(237, 14%, 26%);
-  /* transition: all 0.25s; */
+/* Layout for the multivational section */
+.multivation {
+  background-color: var(--nav-black);
+  margin: 20px 10px;
+  height: fit-content;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  cursor: pointer;
 }
 
-/* .check-mark:hover {
-  border-color: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
-  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
-} */
-
-.check-mark.checked {
-  background-color: pink;
-  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
-}
-
-.star-container{
-  margin-left: auto;
-  margin-right: 10px;
-  cursor: pointer;
-}
-.fa-solid{
-  color: #adaeb0;
-}
-.star-container.important .fa-solid{
-  color: yellow;
-}
-.delete-text{
-  /* margin-left: auto; */
-  color: red;
-  font-size: 12px;
-  margin-right: 10px;
+.multivation h3 {
+  color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: none;
-  cursor: pointer;
-}
-.delete-text.checked{
-  display: block;
+  font-weight: bold;
 }

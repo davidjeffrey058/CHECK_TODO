@@ -18,7 +18,10 @@ const setUpTasksLayout = (data, email) => {
             <div data-id="${items[i].id}" class="check-mark ${items[i].status == "completed" ? "checked":""}">
                 <img src="images/icon-check.svg">
             </div>
-          <p class="task_name ${items[i].status == "completed" ? "checked":""}">${items[i].text}</p>
+            <div class="text-container">
+                <p class="task_name ${items[i].status == "completed" ? "checked":""}">${items[i].text}</p>
+                <label class="task_category">${items[i].category}</label>            
+            </div>
           <div class="star-container ${items[i].important == true ? "important" : ""}" data-id="${items[i].id}" title="Mark as important">
             <i class="fa-solid fa-star"></i>
           </div>
@@ -91,9 +94,7 @@ function markCompleted(id, e){
 //Function that deletes a task
 function deleteTask(id, e){
     let item = db.collection(e).doc(id);
-    item.delete().then(()=>{
-        alert("Deleted successfully");
-    }).catch(error => {
+    item.delete().catch(error => {
         alert("Error deleting document: ", error);
     })
 }
