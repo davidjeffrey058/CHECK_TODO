@@ -33,6 +33,8 @@ body {
   color: #818181;
   display: block;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
 .sidenav a:hover {
@@ -43,6 +45,8 @@ body {
 .sidenav a.active {
   color: #f1f1f1;
   font-size: 17px;
+  font-weight: bold;
+  background-color: #3c3b3b;
 }
 
 /* Style for the main content */

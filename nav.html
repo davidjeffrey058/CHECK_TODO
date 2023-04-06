@@ -5,7 +5,6 @@
   <title>Side Navigation Bar</title>
   <link rel="stylesheet" type="text/css" href="styles/nav.css">
   <link rel="stylesheet" href="styles/taskLayout.css">
-  <script src="./Scripts/navController.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -32,6 +31,27 @@
   <script src="Scripts/mainFirebase.js"></script>
   <script src="Scripts/mainLayout.js"></script>
   <script src="Scripts/motivation.js"></script>
+  <style>
+    .important-list,
+    .category-list {
+      margin-left: 200px;
+      display: none;
+      background-color: transparent;
+    }
+    .the-container{
+      background-color:  #242424;
+      padding: 20px;
+      width: 700px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .important-list h3{
+      color: white;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
@@ -44,19 +64,10 @@
       </div>
       <p class="displayName"></p>
     </div>
-    <div>
-      <i class="fa-duotone fa-house" style="--fa-primary-color: #008efa; --fa-secondary-color: #fafafa;"></i>
-      <a class="active" href="#">Home</a>
-    </div>
-    <div>
-      <a href="#" >Important</a>
-    </div>
-    <div>
-      <a href="#">Category</a>
-    </div>
-    <div>
-      <a id="logoutBtn" onclick="logout(event)">Log out</a>
-    </div>
+    <a class="active" href="#">Home</a>
+    <a href="#">important</a>
+    <a href="#">Category</a>
+    <a id="logoutBtn" onclick="logout(event)">Log Out</a>
   </div>
 
   <!-- Main Content -->
@@ -65,9 +76,8 @@
     <!-- A container holding a number of tasks -->
     <div class="task_container">
       <h3 class="container_title">Tasks</h3>
-        <!-- This is where each task will be displayed from the database -->
       <div class="theContainer">
-
+        <!-- This is where each task will be displayed from the database -->
       </div>
 
       <form action="" class="addTask" onsubmit="addItem(event)">
@@ -98,8 +108,38 @@
         Refresh
       </span>
     </div>
+
+
   </div>
 
+  <!-- The important section -->
+  <div class="important-list">
+    <div class="the-container">
+      <h3>Important Tasks</h3>
+      <div class="important-container">
+        <!-- <div class="item_container">
+          <div class="check-mark">
+            <img src="images/icon-check.svg">
+          </div>
+          <div class="text-container">
+            <p class="task_name">This is a task</p>
+            <label class="task_category">Academic</label>
+          </div>
+          <div class="star-container" title="Mark as important">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div title="Delete task" class="delete-text">
+            <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-list">
+    <h2>Category</h2>
+  </div>
 </body>
+<script src="./Scripts/navController.js"></script>
 
 </html>

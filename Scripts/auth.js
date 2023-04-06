@@ -1,7 +1,9 @@
 //listen for authentication state change
 auth.onAuthStateChanged(user => {
-  if (user != null) {
+  if (user) {
     window.location.href = './nav.html'
+  // }else if(user && !user.emailVerified){
+  //   alert("Verify your email to continue")
   }
 });
 
@@ -22,8 +24,9 @@ signupForm.addEventListener('submit', (e) => {
     }).catch(error => {
       alert(error.message);
     });
+    Credential.user.sendEmailVerification();
     signupForm.reset();
-    window.location.href = "./main_page.html";
+    //window.location.href = "./main_page.html";
   })
     .catch(function (error) {
       // Handle Errors here.
