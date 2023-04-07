@@ -157,6 +157,7 @@ body {
   text-align: right;
 }
 .refresh{
+  display: flex;
   color: white;
   margin-top: 20px;
   background-color: var(--darker-grey);
@@ -168,7 +169,26 @@ body {
   font-size: 12px;
   letter-spacing: 1px;
   font-weight: bold;
+  align-items: center;
 }
 .refresh:hover{
   background-color: #504f4f;
 }
+
+/* Code for the spinner inside the quotes section */
+.spinner{
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 2px solid;
+  border-color: white transparent;
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+

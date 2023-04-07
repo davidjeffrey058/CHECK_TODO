@@ -11,7 +11,7 @@ var links = document.querySelectorAll('.sidenav a');
             
             var linkName = event.target.textContent;
             // alert('You clicked ' + linkName);
-            console.log(linkName);
+            // console.log(linkName);
             if(linkName == "Home"){
               document.querySelector(".main").style.display = "grid";
               document.querySelector(".important-list").style.display = "none";

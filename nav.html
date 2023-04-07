@@ -64,9 +64,9 @@
       </div>
       <p class="displayName"></p>
     </div>
-    <a class="active" href="#">Home</a>
-    <a href="#">important</a>
-    <a href="#">Category</a>
+    <a class="active">Home</a>
+    <a>important</a>
+    <a>Category</a>
     <a id="logoutBtn" onclick="logout(event)">Log Out</a>
   </div>
 
@@ -94,6 +94,7 @@
           </select>
         </div>
       </form>
+      
     </div>
 
     <!-- The Quotes of the day section -->
@@ -103,10 +104,12 @@
         <!-- <p class="quote">This is where the quote of the day will be displayed</p>
         <p class="author">Author: <i>David Jeffrey</i></p> -->
       </div>
-      <span class="refresh" onclick="getQuote()">
-        <i class="fa-solid fa-rotate-right"></i>
+      <div class="refresh" onclick="getQuote(1)">
+        <!-- <i class="fa-solid fa-rotate-right"></i> -->
+        <div class="spinner"></div>
         Refresh
-      </span>
+      </div>
+      
     </div>
 
 

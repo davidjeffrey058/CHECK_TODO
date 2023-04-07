@@ -1,8 +1,12 @@
 const url = "https://api.quotable.io/random";
 // var btn = document.getElementById("new");
-
-async function getQuote () {
+window.addEventListener('load', getQuote(0));
+async function getQuote (number) {
   // var quotes = [];
+  if(number == 1){
+    document.querySelector(".spinner").style.display = "inline-block";
+  }
+
   var container = '';
   for(var i = 0; i < 5; i++){
     await fetch(url)
@@ -20,7 +24,9 @@ async function getQuote () {
     });
     
   }
+
   document.querySelector(".quote-container").innerHTML = container; 
+  document.querySelector(".spinner").style.display = "none";
 };
-window.addEventListener("load", getQuote());
+// window.addEventListener("load", getQuote());
 //btn.addEventListener("click", getQuote);
