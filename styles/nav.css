@@ -184,7 +184,7 @@ body {
   border-color: white transparent;
   border-radius: 50%;
   margin-right: 5px;
-  animation: spin 2s linear infinite;
+  animation: spin 1.5s ease infinite;
 }
 @keyframes spin{
   to{

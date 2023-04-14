@@ -20,7 +20,7 @@ auth.onAuthStateChanged(user => {
     //document.querySelector('#userEmail').innerHTML = 'Logged in as ' + user.email
   }
   else {
-    window.location.href = './authentication.html';
+    window.location.href = './index.html';
   }
 });
 

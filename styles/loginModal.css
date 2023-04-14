@@ -109,3 +109,21 @@
     padding-left: 3px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* spinner code */
+.spinner{
+    display: none;
+    height: 20px;
+    width: 20px;
+    border: 3px solid;
+    border-color: black transparent;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: spin 1.5s ease infinite;
+    margin: 10px auto;
+  }
+  @keyframes spin{
+    to{
+      transform: rotate(360deg);
+    }
+  }

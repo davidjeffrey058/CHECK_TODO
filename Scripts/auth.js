@@ -11,6 +11,8 @@ auth.onAuthStateChanged(user => {
 const signupForm = document.querySelector('#user_details');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  const spinner = document.querySelector(".spinner1");
+  spinner.style.display = "block";
 
   //get the user information
   const fullname = signupForm['fullname'].value;
@@ -24,15 +26,16 @@ signupForm.addEventListener('submit', (e) => {
     }).catch(error => {
       alert(error.message);
     });
-    Credential.user.sendEmailVerification();
+    //Credential.user.sendEmailVerification();
+    spinner.style.display = "none";
     signupForm.reset();
-    //window.location.href = "./main_page.html";
   })
     .catch(function (error) {
       // Handle Errors here.
       var errorMessage = error.message;
       alert(errorMessage);
       console.log(error);
+      spinner.style.display = "none";
     });
 
     // auth.currentUser.sendEmailVerification()
@@ -50,7 +53,8 @@ signupForm.addEventListener('submit', (e) => {
 const loginForm = document.querySelector('#loginForm');
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
+  const spinner = document.querySelector(".spinner");
+  spinner.style.display = "block";
   const email = loginForm['loginEmail'].value;
   const password = loginForm['loginPassword'].value;
 
@@ -58,6 +62,7 @@ loginForm.addEventListener('submit', (e) => {
   const thatEmail = '';
   auth.signInWithEmailAndPassword(email, password).then(credential => {
     console.log(credential.user);
+    spinner.style.display = "none";
     loginForm.reset();
   })
     .catch(function (error) {
@@ -65,6 +70,7 @@ loginForm.addEventListener('submit', (e) => {
       var errorCode = error.code;
       var errorMessage = error.message;
       alert(errorMessage);
+      spinner.style.display = "none";
       console.log(errorCode);
     });
 })

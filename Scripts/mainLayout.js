@@ -12,27 +12,25 @@ const setUpTasksLayout = (data, email) => {
     //console.log(items);
 
     let container = '';
-    var i = 0;
     items.forEach(docs => {
         const li = `
         <div class="item_container">
-            <div data-id="${items[i].id}" class="check-mark ${items[i].status == "completed" ? "checked":""}">
+            <div data-id="${docs.id}" class="check-mark ${docs.status == "completed" ? "checked":""}">
                 <img src="images/icon-check.svg">
             </div>
             <div class="text-container">
-                <p class="task_name ${items[i].status == "completed" ? "checked":""}">${items[i].text}</p>
-                <label class="task_category">${items[i].category}</label>            
+                <p class="task_name ${docs.status == "completed" ? "checked":""}">${docs.text}</p>
+                <label class="task_category">${docs.category}</label>            
             </div>
-          <div class="star-container ${items[i].important == true ? "important" : ""}" data-id="${items[i].id}" title="Mark as important">
+          <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
             <i class="fa-solid fa-star"></i>
           </div>
-          <div title="Delete task" data-id="${items[i].id}" class="delete-text ${items[i].status == "completed" ? "checked":""}">
+          <div title="Delete task" data-id="${docs.id}" class="delete-text ${docs.status == "completed" ? "checked":""}">
             <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
           </div>
         </div>
     `;
         container += li;
-        i++;
     });
     document.querySelector('.theContainer').innerHTML = container;
 
