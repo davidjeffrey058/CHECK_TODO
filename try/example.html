@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+</head>
+
+<body>
+	<h3>The Time</h3>
+	<p class="current"></p>
+	<p class="previous"></p>
+	<p class="hours-left"></p>
+</body>
+<script>
+	const now = new Date();
+	const futureDate = new Date('2023-04-14T21:30:30');
+
+	const diffInMs = futureDate - now;
+	// const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+	const diffInMinutes = Math.floor(diffInMs / 60000);
+
+	console.log(diffInMinutes);
+	document.querySelector(".current").innerHTML = "Current Date: " + now;
+	document.querySelector(".previous").innerHTML = "Future Date: " + futureDate;
+	document.querySelector(".hours-left").innerHTML = "Time Left: " + convertTime(diffInMs);
+
+	function convertTime(milliseconds) {
+		let result;
+
+		const minutes = milliseconds / 60000;
+
+		if (minutes < 60) {
+			result = `${Math.floor(minutes)} minutes`;
+		} else if (minutes < 1440) {
+			const hours = Math.floor(minutes / 60);
+			const remainingMinutes = Math.floor(minutes % 60);
+			result = `${hours} hour${hours !== 1 ? 's' : ''}, ${remainingMinutes} minute${remainingMinutes !== 1 ? 's' : ''}`;
+		} else if (minutes < 525600) {
+			const days = Math.floor(minutes / 1440);
+			const remainingHours = Math.floor((minutes % 1440) / 60);
+			result = `${days} day${days !== 1 ? 's' : ''}, ${remainingHours} hour${remainingHours !== 1 ? 's' : ''}`;
+		} else {
+			const years = Math.floor(minutes / 525600);
+			const remainingMonths = Math.floor((minutes % 525600) / 43200);
+			result = `${years} year${years !== 1 ? 's' : ''}, ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+		}
+
+		return result;
+	}
+
+
+</script>
+
+</html>
