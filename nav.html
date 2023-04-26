@@ -2,7 +2,9 @@
 <html>
 
 <head>
-  <title>Side Navigation Bar</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Todo</title>
   <link rel="stylesheet" type="text/css" href="styles/nav.css">
   <link rel="stylesheet" href="styles/taskLayout.css">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -38,14 +40,16 @@
       display: none;
       background-color: transparent;
     }
-    .the-container{
-      background-color:  #242424;
+
+    .the-container {
+      background-color: #242424;
       padding: 20px;
       width: 700px;
       margin: auto;
       border-radius: 10px;
     }
-    .important-list h3{
+
+    .important-list h3 {
       color: white;
       text-align: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -65,9 +69,10 @@
       <p class="displayName"></p>
     </div>
     <a class="active">Home</a>
-    <a>important</a>
+    <a>Important</a>
     <a>Category</a>
-    <a id="logoutBtn" onclick="logout(event)">Log Out</a>
+    <a>Collaborations</a>
+    <a style="margin-top: 30px;"id="logoutBtn" onclick="logout(event)">Log Out</a>
   </div>
 
   <!-- Main Content -->
@@ -94,7 +99,7 @@
           </select>
         </div>
       </form>
-      
+
     </div>
 
     <!-- The Quotes of the day section -->
@@ -109,7 +114,7 @@
         <div class="spinner"></div>
         Refresh
       </div>
-      
+
     </div>
 
 
@@ -120,27 +125,30 @@
     <div class="the-container">
       <h3>Important Tasks</h3>
       <div class="important-container">
-        <!-- <div class="item_container">
-          <div class="check-mark">
-            <img src="images/icon-check.svg">
-          </div>
-          <div class="text-container">
-            <p class="task_name">This is a task</p>
-            <label class="task_category">Academic</label>
-          </div>
-          <div class="star-container" title="Mark as important">
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div title="Delete task" class="delete-text">
-            <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
-          </div> -->
-        </div>
+        
       </div>
     </div>
   </div>
+  </div>
 
+  <!-- The category section -->
   <div class="category-list">
     <h2>Category</h2>
+  </div>
+
+  <!-- The collaborations section -->
+  <div class="collaborations">
+    <div class="task_container">
+      <h3 class="container_title">Tasks</h3>
+      <div class="collab">
+        <!-- This is where each task will be displayed from the database -->
+      </div>
+    </div>
+
+    <form onsubmit="checkEmailExists(event)" class="check-form">
+      <input class="check-email" type="email" placeholder="check email availability" required>
+      <input type="submit" value="Check">
+    </form>
   </div>
 </body>
 <script src="./Scripts/navController.js"></script>

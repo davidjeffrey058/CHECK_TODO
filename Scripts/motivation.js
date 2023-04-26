@@ -28,5 +28,3 @@ async function getQuote (number) {
   document.querySelector(".quote-container").innerHTML = container; 
   document.querySelector(".spinner").style.display = "none";
 };
-// window.addEventListener("load", getQuote());
-//btn.addEventListener("click", getQuote);

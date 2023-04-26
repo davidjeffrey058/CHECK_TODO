@@ -191,4 +191,7 @@ body {
     transform: rotate(360deg);
   }
 }
-
+.collaborations{
+  display: none;
+  margin-left: 200px;
+}
