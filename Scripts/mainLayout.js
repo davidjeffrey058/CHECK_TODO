@@ -134,7 +134,7 @@ function todoLayout(items, status, num) {
                  <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
                  <div>
                      <label class="task_category">${docs.category}</label> 
-                     <label class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.createdDate, docs.endDate)}</i></label>
+                     <label title= "Ends in: ${docs.endDate}" class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.endDate)}</i></label>
                  </div>           
              </div>
            <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
@@ -159,7 +159,7 @@ function todoLayout(items, status, num) {
                 <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
                 <div>
                     <label class="task_category">${docs.category}</label> 
-                    <label class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.createdDate, docs.endDate)}</i></label>
+                    <label title= "Ends in: ${formatedDate(docs.endDate)}" class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.createdDate, docs.endDate)}</i></label>
                 </div>           
             </div>
           <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
@@ -180,11 +180,11 @@ function todoLayout(items, status, num) {
     return container;
 }
 
-function timeLeft(createdDate, endDate) {
-    const createDate = new Date(createdDate);
+function timeLeft(endDate) {
+    const now = new Date();
     const futureDate = new Date(endDate);
 
-    const diffInMs = futureDate - createDate;
+    const diffInMs = futureDate - now;
 
     return convertTimeLeft(diffInMs);
 
