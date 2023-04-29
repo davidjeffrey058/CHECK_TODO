@@ -31,7 +31,7 @@ var links = document.querySelectorAll('.sidenav a');
               document.querySelector(".main").style.display = "none";
               document.querySelector(".important-list").style.display = "none";
               document.querySelector(".category-list").style.display = "none";
-              document.querySelector(".collaborations").style.display = "block";
+              document.querySelector(".collaborations").style.display = "grid";
             }
         });
     });

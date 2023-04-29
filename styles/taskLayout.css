@@ -74,8 +74,18 @@
     padding-right: 20px;
     padding-left: 20px;
   }
+  .text-container div{
+    display: flex;
+  }
   .task_category{
     font-size: 13px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #747475;
+    align-self: center;
+}
+.task_endDate{
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 20px;
+  align-self: center;
 }

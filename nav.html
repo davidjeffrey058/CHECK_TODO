@@ -90,7 +90,7 @@
         <div class="category_part">
           <label for="">Category</label>
           <select id="categorySelect" required>
-            <option value="None">None</option>
+            <option value="None">General</option>
             <option value="Academic">Academic</option>
             <option value="Religious">Religious</option>
             <option value="Work">Work</option>
@@ -98,6 +98,9 @@
             <option value="Activity">Activity</option>
           </select>
         </div>
+        <label class="date-input-label"for="date-input">End Date(optional)</label>
+        <input id="date-input" type="datetime-local">
+        <input class="addBtn"type="submit" value="Add">
       </form>
 
     </div>
@@ -139,7 +142,7 @@
   <!-- The collaborations section -->
   <div class="collaborations">
     <div class="task_container">
-      <h3 class="container_title">Tasks</h3>
+      <h3 class="container_title">My Collab tasks</h3>
       <div class="collab">
         <!-- This is where each task will be displayed from the database -->
       </div>

@@ -18,20 +18,21 @@ auth.onAuthStateChanged(user => {
     });
 
     // Retrieve the document from collaboration
-    // const docRef = db.collection("collaboration").doc("DOCUMENT_ID");
+    const docRef = db.collection("collaboration").doc("JMEpR1X3jzDejR7FWeqm");
 
-    // var cont = "";
+    var cont = "";
 
-    // docRef.get().then((doc) => {
-    //   if (doc.exists) {
-    //     const tasks = doc.data().tasks;
-
-    //   } else {
-    //     console.log("No such document!");
-    //   }
-    // }).catch((error) => {
-    //   console.log("Error getting document:", error);
-    // });
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        const tasks = doc.data().tasks;
+        console.log(tasks);
+      } else {
+        console.log("No such document!");
+      }
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
+    
 
   }
   else {
@@ -55,7 +56,8 @@ function addItem(e) {
     status: 'active',
     category: taskText['categorySelect'].value,
     important: false,
-    createdDate: Date()
+    createdDate: Date(),
+    endDate: taskText['date-input'].value
   }).then(() => {
     taskText.reset();
   })

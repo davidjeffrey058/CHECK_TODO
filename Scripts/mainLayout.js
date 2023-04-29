@@ -18,36 +18,12 @@ const setUpTasksLayout = (data, email) => {
         return obj.important === true;
     });
 
-    // console.log(importantItems);
-    let temp = '';
-    var j = 0;
-    importantItems.forEach(docs => {
-        const li = `
-        <div class="item_container">
-        <div data-id="${importantItems[j].id}" class="check-mark ${importantItems[j].status == "completed" ? "checked" : ""}">
-            <img src="images/icon-check.svg">
-        </div>
-        <div class="text-container">
-            <p class="task_name ${importantItems[j].status == "completed" ? "checked" : ""}">${importantItems[j].text}</p>
-            <label class="task_category">${importantItems[j].category}</label>            
-        </div>
-      <div class="star-container ${importantItems[j].important == true ? "important" : ""}" data-id="${importantItems[j].id}" title="Mark as important">
-        <i class="fa-solid fa-star"></i>
-      </div>
-      <div title="Delete task" data-id="${importantItems[j].id}" class="delete-text ${importantItems[j].status == "completed" ? "checked" : ""}">
-        <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
-      </div>
-    </div>
-        `;
-
-        temp += li;
-        j++;
-    });
+    //Displays all the important tasks    
     const emptyMessage = `<h2 class="error-message">There is no important message here!</h2>`;
     if (importantItems.length == 0) {
         document.querySelector('.important-container').innerHTML = emptyMessage;
     } else {
-        document.querySelector('.important-container').innerHTML = temp;
+        document.querySelector('.important-container').innerHTML = todoLayout(importantItems);
 
     }
 
@@ -152,7 +128,10 @@ function todoLayout(items) {
         </div>
         <div class="text-container">
             <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
-            <label class="task_category">${docs.category}</label>            
+            <div>
+                <label class="task_category">${docs.category}</label> 
+                <label class="task_endDate"><i>Due in: 2hrs 3min</i></label>
+            </div>           
         </div>
       <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
         <i class="fa-solid fa-star"></i>
