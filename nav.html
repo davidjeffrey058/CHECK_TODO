@@ -1,32 +1,47 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="nav.css">
-    <script src="https://kit.fontawesome.com/97b584e9f9.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/97b584e9f9.js" crossorigin="anonymous"></script>
-    <script src="motivation.js"></script>
+  <title>Side Navigation Bar</title>
+  <link rel="stylesheet" type="text/css" href="nav.css">
+  <script src="./try/navController.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCS8Goa_OXK2fl3mykZr_EeDSeEOOil1X8",
+      authDomain: "group-todo-aafed.firebaseapp.com",
+      databaseURL: "https://group-todo-aafed-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "group-todo-aafed",
+      storageBucket: "group-todo-aafed.appspot.com",
+      messagingSenderId: "449574472630",
+      appId: "1:449574472630:web:6c2e027a02a6a023ce4f17"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    //make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+  <script src="try/mainFirebaseCopy.js"></script>
+  <script src="try/mainLayoutCopy.js"></script>
 </head>
+
 <body>
-    <div class="sidebar">
-        
-        <ul class="links">
-          <li class="buttons1">
-            <a href="main_page.html">HOME</a>
-          </li>  
-          <li class="buttons2">
-            <a href="createTask.html">CREATE TASK</a>
-          </li>
-          <li class="buttons3">
-            <a href="">PROFILE</a>
-          </li>
-          <li class="buttons4">
-            <a href="" id="logout" onclick="logout(event)">LOGOUT</a>
-          </li>
-        </ul>
+
+  <!-- Side Navigation Bar -->
+  <div class="sidenav">
+    <div class="profile_part">
+      <div>
+        <img id="profile_image" src="./images/person.png">
+      </div>
+      <p class="displayName"></p>
     </div>
+<<<<<<< HEAD
   <div class="motivation">
     <header ><h3 id="quote_tittle">QUOTE OF THE DAY</h3></header>
     <div class="content">
@@ -41,8 +56,44 @@
             <div class="buttons">
                 <button class="new" onclick="getQuote()">New Quote</button>
             </div>
+=======
+    <a class="active" href="#">Home</a>
+    <a href="#" >Important</a>
+    <a href="#">Category</a>
+    <a href="#" onclick="logout(event)">Log out</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- A container holding a number of tasks -->
+    <div class="task_container">
+      <h3 class="container_title">Tasks</h3>
+
+      <div class="theContainer">
+
+      </div>
+
+      <form action="" class="addTask" onsubmit="addItem(event)">
+        <input type="text" id="task_input" placeholder="+   Add task" required>
+        <div class="category_part">
+          <label for="">Category</label>
+          <select id="categorySelect">
+            <option value="None">None</option>
+            <option value="Academic">Academic</option>
+            <option value="Religious">Religious</option>
+            <option value="Work">Work</option>
+            <option value="Home">Home</option>
+            <option value="Activity">Activity</option>
+          </select>
+>>>>>>> a3659d1067f5052a98488028b3083ed491541f26
         </div>
+      </form>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3659d1067f5052a98488028b3083ed491541f26
 </body>
+
 </html>
