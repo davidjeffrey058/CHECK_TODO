@@ -89,3 +89,6 @@
   margin-left: 20px;
   align-self: center;
 }
+.task_endDate.empty{
+  display: none;
+}

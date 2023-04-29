@@ -55,6 +55,10 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: bold;
     }
+    .any{}
+    .status-number{
+
+    }
   </style>
 </head>
 
@@ -63,10 +67,14 @@
   <!-- Side Navigation Bar -->
   <div class="sidenav">
     <div class="profile_part">
-      <div>
+      <div class="any">
         <img id="profile_image" src="./images/person.png">
       </div>
       <p class="displayName"></p>
+    </div>
+    <div>
+      <a>Text</a>
+      <div class="status-number">1</div>
     </div>
     <a class="active">Home</a>
     <a>Important</a>
@@ -90,7 +98,7 @@
         <div class="category_part">
           <label for="">Category</label>
           <select id="categorySelect" required>
-            <option value="None">General</option>
+            <option value="General">General</option>
             <option value="Academic">Academic</option>
             <option value="Religious">Religious</option>
             <option value="Work">Work</option>
@@ -103,6 +111,12 @@
         <input class="addBtn"type="submit" value="Add">
       </form>
 
+    </div>
+    <div class="task_container">
+      <h3 class="container_title">Done</h3>
+      <div class="doneContainer">
+        <!-- This is where each task will be displayed from the database -->
+      </div>
     </div>
 
     <!-- The Quotes of the day section -->
