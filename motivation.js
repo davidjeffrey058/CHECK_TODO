@@ -34,8 +34,7 @@ var btn = document.getElementById("new");
 function getQuote () {
 var quote = document.getElementById("quote");
 var author = document.getElementById("author");
-
-
+//fetching the quotes and the authors from the api in the url variable
   fetch(url)
     .then((data) => data.json())
     .then((item) => {
@@ -45,6 +44,7 @@ var author = document.getElementById("author");
       quote.innerText = item.content;
       author.innerText = item.author;
     });
+    
 };
 getQuote();
 window.addEventListener("load", getQuote);
