@@ -104,6 +104,11 @@ input{
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 10px;
+  cursor:default;
+}
+.submenu{
+  list-style-type: none;
+  display: none;
 }
 
 #task_input {

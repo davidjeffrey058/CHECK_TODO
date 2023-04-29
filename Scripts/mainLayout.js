@@ -11,7 +11,7 @@ const setUpTasksLayout = (data, email) => {
     });
 
     document.querySelector('.theContainer').innerHTML = todoLayout(items, "active");
-    document.querySelector('.doneContainer').innerHTML = todoLayout(items, "completed");
+    document.querySelector('.doneContainer').innerHTML = todoLayout(items, "completed", 0);
     document.querySelector(".collab").innerHTML = todoLayout(items);
 
     //Copying the important items into the important list
@@ -79,7 +79,8 @@ function markCompleted(id, e) {
             } else if (status == "completed") {
                 item.update({
                     status: "active"
-                })
+                });
+                document.querySelector("#done").style.display = "none";
             }
         }
     });
@@ -90,7 +91,8 @@ function deleteTask(id, e) {
     let item = db.collection(e).doc(id);
     item.delete().catch(error => {
         alert("Error deleting document: ", error);
-    })
+    });
+    document.querySelector("#done").style.display = "none";
 }
 
 //Function that adds a task to important
@@ -119,7 +121,7 @@ function formateDate(dateValue) {
 }
 
 
-function todoLayout(items, status) {
+function todoLayout(items, status, num) {
     let container = '';
     if (status == null) {
         items.forEach(docs => {
@@ -169,6 +171,9 @@ function todoLayout(items, status) {
         </div>
     `;
                 container += li;
+                if(status == "completed"){
+                    document.querySelector("#done").style.display = "block";
+                }
             }
         });
     }

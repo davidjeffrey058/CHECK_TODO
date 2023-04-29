@@ -20,20 +20,14 @@ auth.onAuthStateChanged(user => {
     // Retrieve the document from collaboration
     const docRef = db.collection("collaboration").doc("JMEpR1X3jzDejR7FWeqm");
 
-    var cont = "";
-
-    docRef.get().then((doc) => {
+    docRef.onSnapshot((doc) => {
       if (doc.exists) {
         const tasks = doc.data().tasks;
         console.log(tasks);
       } else {
         console.log("No such document!");
       }
-    }).catch((error) => {
-      console.log("Error getting document:", error);
     });
-    
-
   }
   else {
     window.location.href = './index.html';
@@ -86,3 +80,29 @@ function checkEmailExists(e) {
     });
 }
 
+function collabTaskLayout(){
+  let container = '';
+      items.forEach(docs => {
+          const li = `
+       <div class="item_container" title="Created on: ${formateDate(docs.createdDate)}">
+           <div data-id="${docs.id}" class="check-mark ${docs.status == "completed" ? "checked" : ""}">
+               <img src="images/icon-check.svg">
+           </div>
+           <div class="text-container">
+               <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
+               <div>
+                   <label class="task_category">${docs.category}</label> 
+                   <label class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.createdDate, docs.endDate)}</i></label>
+               </div>           
+           </div>
+         <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
+           <i class="fa-solid fa-star"></i>
+         </div>
+         <div title="Delete task" data-id="${docs.id}" class="delete-text ${docs.status == "completed" ? "checked" : ""}">
+           <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
+         </div>
+       </div>
+   `;
+          container += li;
+      });
+}

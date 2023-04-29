@@ -55,9 +55,8 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: bold;
     }
-    .any{}
-    .status-number{
-
+    #done{
+      display: none;
     }
   </style>
 </head>
@@ -67,18 +66,22 @@
   <!-- Side Navigation Bar -->
   <div class="sidenav">
     <div class="profile_part">
-      <div class="any">
+      <div>
         <img id="profile_image" src="./images/person.png">
       </div>
       <p class="displayName"></p>
     </div>
-    <div>
-      <a>Text</a>
-      <div class="status-number">1</div>
-    </div>
     <a class="active">Home</a>
     <a>Important</a>
     <a>Category</a>
+    <ul class="submenu">
+      <li><a>General</a></li>
+      <li><a>Academic</a></li>
+      <li><a>Religious</a></li>
+      <li><a>Work</a></li>
+      <li><a>Home</a></li>
+      <li><a>Activity</a></li>
+    </ul>
     <a>Collaborations</a>
     <a style="margin-top: 30px;"id="logoutBtn" onclick="logout(event)">Log Out</a>
   </div>
@@ -112,7 +115,7 @@
       </form>
 
     </div>
-    <div class="task_container">
+    <div id="done" class="task_container">
       <h3 class="container_title">Done</h3>
       <div class="doneContainer">
         <!-- This is where each task will be displayed from the database -->
