@@ -137,7 +137,7 @@ function todoLayout(items, status, num) {
                  <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
                  <div>
                      <label class="task_category">${docs.category}</label> 
-                     <label title= "Ends in: ${docs.endDate}" class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.endDate)}</i></label>
+                     <label title= "Ends in: ${formatedDate(docs.endDate)}" class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.endDate)}</i></label>
                  </div>           
              </div>
            <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
