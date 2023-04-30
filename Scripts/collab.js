@@ -21,6 +21,7 @@ const setCollaborating = (data) => {
         });
     });
     document.querySelector(".collabTask").innerHTML = collabTaskLayout(collaborating, false);
+
     collabCheckboxEventListener();
     collabEventListenersDelete();
 }
@@ -67,7 +68,7 @@ function collabCheckboxEventListener() {
 
 //Creates an eventListener for every single collaboration delete
 function collabEventListenersDelete() {
-    var todoCheckMarks = document.querySelectorAll('.item_container .collab-delete-text');
+    var todoCheckMarks = document.querySelectorAll('.collab_container .collab-delete-text');
 
     todoCheckMarks.forEach((checkMark) => {
         checkMark.addEventListener("click", function () {
@@ -91,7 +92,6 @@ function collabCompleted(id) {
                 item.update({
                     status: "active"
                 });
-                document.querySelector("#done").style.display = "none";
             }
         }
     });
@@ -103,5 +103,4 @@ function deleteCollabTask(id) {
     item.delete().catch(error => {
         alert("Error deleting document: ", error);
     });
-    document.querySelector("#done").style.display = "none";
 }

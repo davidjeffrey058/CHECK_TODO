@@ -29,3 +29,17 @@
     border-radius: 5px;
     background-color: var(--darker-grey);
   }
+  .collab-delete-text{
+    /* margin-left: auto; */
+    color: red;
+    font-size: 12px;
+    margin-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: none;
+    cursor: pointer;
+    align-self: center;
+    margin-left: auto;
+  }
+  .collab-delete-text.checked{
+    display: block;
+  }  
