@@ -111,7 +111,7 @@ input{
   display: none;
 }
 
-#task_input {
+#task_input, #collab-task_input {
   width: 97%;
   padding-left: 5px;
 }
@@ -125,7 +125,7 @@ input{
 .category_part label {
   margin-right: 10px;
 }
-.category_part select {
+.category_part select, .collab-category_part select {
   background-color: var(--nav-black);
   padding: 5px 0px;
   color: #818181;

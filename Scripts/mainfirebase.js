@@ -8,7 +8,7 @@ auth.onAuthStateChanged(async user => {
     const userName = document.querySelector('.displayName');
     userEmail = user.email;
     userId = user.uid;
-    
+
     userName.innerHTML = 'Hi ' + firstName(user.displayName);
     userName.title = 'Logged in as ' + user.email;
 
@@ -18,16 +18,12 @@ auth.onAuthStateChanged(async user => {
     });
 
     // Retrieve the document from collaboration
-    const docRef = db.doc("/collaboration/JMEpR1X3jzDejR7FWeqm/task/bA0Iw6JhgwxRZGFo6IFn");
+    const docRef = db.collection("collaboration").where("author", "==", userEmail);
 
     docRef.onSnapshot((doc) => {
-      if (doc.exists) {
-        console.log(doc.data())
-        setCollab(doc.data());
-      } else {
-        console.log("No such document!");
-      }
+      setCollab(doc.docs);
     });
+
   }
   else {
     window.location.href = './index.html';
@@ -51,7 +47,7 @@ function addItem(e) {
     category: taskText['categorySelect'].value,
     important: false,
     createdDate: Date(),
-    endDate: taskText['date-input'].value
+    endDate: taskText['date-input'].value,
   }).then(() => {
     taskText.reset();
   })
@@ -63,17 +59,33 @@ function firstName(value) {
   return result[0];
 }
 
-function checkEmailExists(e) {
-  var email = document.querySelector(".check-email");
+function checkEmailExists(e,) {
+  var collabForm = document.querySelector('.collab-check-form');
+  var email = document.querySelector('.check-email');
+
   e.preventDefault();
+
   auth.fetchSignInMethodsForEmail(email.value)
     .then(signInMethods => {
       if (signInMethods.length === 0) {
-        console.log('Email does not exist');
+        alert(email.value + ' does not exist');
       } else {
-        console.log('Email exists');
+        if(email.value === userEmail){
+          alert("That is your email address");
+          return;
+        }else{
+          db.collection('collaboration').add({
+            text: collabForm['collab-task_input'].value,
+            status: 'active',
+            category: collabForm['collab-categorySelect'].value,
+            createdDate: Date(),
+            endDate: collabForm['collab-date-input'].value,
+            collaborator: email.value,
+            author: userEmail
+          })
+        }
       }
-      document.querySelector(".check-form").reset();
+      collabForm.reset();
     })
     .catch(error => {
       console.log('Error checking email existence:', error);

@@ -1,9 +1,13 @@
 const setCollab = (data) => {
-    var taskArray = data.tasks;
-    console.log(taskArray);
-    console.log(typeof taskArray);
+    var collabItems = [];
 
-    document.querySelector(".collab").innerHTML = collabTaskLayout(taskArray);;
+    data.forEach(element => {
+        collabItems.push({
+            id: element.id,
+            ...element.data()
+        });
+    });
+    document.querySelector(".collab").innerHTML = collabTaskLayout(collabItems);;
     // collabCheckboxEventListener(email);
 }
 
@@ -13,17 +17,19 @@ function collabTaskLayout(array) {
     array.forEach(docs => {
         var li = `
         <div class="collab_container" title="Created on: ${formatedDate(docs.createdDate)}">
-        <div data-id="${array.indexOf(docs)}" class="collab-check-mark ${docs.status == "completed" ? "checked" : ""}">
+        <div data-id="${docs.id}" class="collab-check-mark ${docs.status == "completed" ? "checked" : ""}">
             <img src="images/icon-check.svg">
         </div>
         <div class="text-container">
             <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
             <div>
                 <label class="task_category">${docs.category}</label> 
-                <label class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.createdDate, docs.endDate)}</i></label>
+                <label class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.endDate)}</i></label>
+                
             </div>           
+            <label class="task_category" style="margin-top: 10px"><b>Collaborator:</b> ${docs.collaborator}</label>
         </div>
-      <div title="Delete task" data-id="${array.indexOf(docs)}" class="delete-text ${docs.status == "completed" ? "checked" : ""}">
+      <div title="Delete task" data-id="${docs.id}" class="delete-text ${docs.status == "completed" ? "checked" : ""}">
         <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
       </div>
     </div>

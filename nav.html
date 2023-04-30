@@ -52,7 +52,8 @@
     }
 
     .important-list h3,
-    .the-container h3 {
+    .the-container h3,
+    .task_container h3 {
       color: white;
       text-align: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -168,36 +169,41 @@
 
   <!-- The collaborations section -->
   <div class="collaborations">
-    <div class="task_container">
-      <h3 class="container_title">My Collab tasks</h3>
-      <div class="collab">
-        <!-- This is where each task will be displayed from the database -->
-      </div>
-    </div>
+      <div class="task_container">
+        <h3>My collaborative Tasks</h3>
+        <div class="collab">
 
-    <form onsubmit="checkEmailExists(event)" class="check-form">
-      <input class="check-email" type="email" placeholder="check email availability" required>
-      <input type="submit" value="Check">
-    </form>
+          <!-- This is where each task will be displayed from the database -->
+        </div>
+        <form action="" class="collab-check-form" onsubmit="checkEmailExists(event)">
+          <input type="text" id="collab-task_input" placeholder="+   Add task" required>
+          <div class="category_part">
+            <label for="">Category</label>
+            <select id="collab-categorySelect" required>
+              <option value="General">General</option>
+              <option value="Academic">Academic</option>
+              <option value="Religious">Religious</option>
+              <option value="Work">Work</option>
+              <option value="Activity">Activity</option>
+            </select>
+          </div>
+          <label class="collab-date-input-label" for="collab-date-input">End Date(optional)</label>
+          <input id="collab-date-input" type="datetime-local">
+          <input class="check-email" type="email" placeholder="Add collaborators email" required>
+          <input class="collab-addBtn" type="submit" value="Add">
+        </form>
+      </div>
+
+      <div class="task_container">
+        <h3>Collaborating Tasks</h3>
+        <div class="collabTask">
+
+          <!-- This is where each task will be displayed from the database -->
+        </div>
+      </div>
+    
   </div>
 </body>
 <script src="./Scripts/navController.js"></script>
-<!-- <script>
-  const anchors = document.querySelectorAll('.submenu a');
-
-// add an event listener to each anchor element
-anchors.forEach(anchor => {
-  anchor.addEventListener('click', (event) => {
-    // prevent the default behavior of the link
-    event.preventDefault();
-
-    // get the text content of the clicked link
-    const name = anchor.textContent;
-
-    // display a message to the user with the clicked name
-    alert(`You clicked on ${name}`);
-  });
-});
-</script> -->
 
 </html>
