@@ -19,10 +19,15 @@ auth.onAuthStateChanged(async user => {
 
     // Retrieve the document from collaboration
     const docRef = db.collection("collaboration").where("author", "==", userEmail);
-
     docRef.onSnapshot((doc) => {
       setCollab(doc.docs);
     });
+
+    //Retrieve the collaborating tasks
+    const collabDocRef = db.collection("collaboration").where("collaborator", "==", userEmail);
+    collabDocRef.onSnapshot((doc) => {
+      setCollaborating(doc.docs);
+    })
 
   }
   else {

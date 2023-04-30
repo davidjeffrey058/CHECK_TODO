@@ -7,11 +7,23 @@ const setCollab = (data) => {
             ...element.data()
         });
     });
-    document.querySelector(".collab").innerHTML = collabTaskLayout(collabItems);;
+    document.querySelector(".collab").innerHTML = collabTaskLayout(collabItems, true);
     // collabCheckboxEventListener(email);
 }
 
-function collabTaskLayout(array) {
+const setCollaborating = (data) => {
+    var collaborating = [];
+
+    data.forEach(element => {
+        collaborating.push({
+            id: element.id,
+            ...element.data()
+        });
+    });
+    document.querySelector(".collabTask").innerHTML = collabTaskLayout(collaborating, false);
+}
+
+function collabTaskLayout(array, isCollab) {
     
     var container = "";
     array.forEach(docs => {
@@ -27,7 +39,7 @@ function collabTaskLayout(array) {
                 <label class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.endDate)}</i></label>
                 
             </div>           
-            <label class="task_category" style="margin-top: 10px"><b>Collaborator:</b> ${docs.collaborator}</label>
+            <label class="task_category" style="margin-top: 10px"><b>${isCollab ? "Collaborator" : "Author"}:</b> ${isCollab ? docs.collaborator : docs.author}</label>
         </div>
       <div title="Delete task" data-id="${docs.id}" class="delete-text ${docs.status == "completed" ? "checked" : ""}">
         <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
