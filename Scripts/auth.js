@@ -15,11 +15,12 @@ signupForm.addEventListener('submit', (e) => {
   spinner.style.display = "block";
 
   //get the user information
-  const fullname = signupForm['fullname'].value;
+  const fullname = document.querySelector('#fullname').value;
   const email = signupForm['signupEmail'].value;
   const password = signupForm['signupPassword'].value;
 
-  //signup a new user  
+  // console.log(fullname);
+  // signup a new user  
   auth.createUserWithEmailAndPassword(email, password).then(Credential => {
     Credential.user.updateProfile({
       displayName : fullname
