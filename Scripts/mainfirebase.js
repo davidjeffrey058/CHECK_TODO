@@ -8,13 +8,12 @@ auth.onAuthStateChanged(async user => {
     const userName = document.querySelector('.displayName');
     userEmail = user.email;
     userId = user.uid;
-
-    userName.innerHTML = 'Hi ' + firstName('David Jeffrey');
+    
+    userName.innerHTML = 'Hi ' + firstName(user.displayName);
     userName.title = 'Logged in as ' + user.email;
 
     //get all the tasks from the users collection
     db.collection(userEmail).onSnapshot(snapshot => {
-      console.log(snapshot.docs)
       setUpTasksLayout(snapshot.docs, userEmail);
     });
 
