@@ -6,14 +6,52 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-
+	<link rel="stylesheet" href="/styles/nav.css">
+	<link rel="stylesheet" href="/styles/taskLayout.css">
 </head>
 
 <body>
-	<h3>The Time</h3>
-	<p class="current"></p>
-	<p class="previous"></p>
-	<p class="hours-left"></p>
+	<div class="task_container">
+		<h3 class="container_title">Tasks</h3>
+		<div class="theContainer">
+		  <!-- This is where each task will be displayed from the database -->
+		  <div class="item_container" title="Created on: ${formateDate(docs.createdDate)}">
+            <div data-id="${docs.id}" class="check-mark">
+                <img src="images/icon-check.svg">
+            </div>
+            <div class="text-container">
+                <p class="task_name">Go hiking</p>
+                <div>
+                    <label class="task_category">General</label> 
+                    <label title= "Ends in: ${formatedDate(docs.endDate)}" class="task_endDate"><i>Due in: 2hrs</i></label>
+                </div>           
+            </div>
+          <div title="Delete task" data-id="${docs.id}" class="delete-text ">
+            <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
+          </div>
+        </div>
+		</div>
+  
+		<form action="" class="addTask" onsubmit="addItem(event)">
+		  <input type="text" id="task_input" placeholder="+   Add task" required>
+		  <div class="category_part">
+			<label for="">Category</label>
+			<select id="categorySelect" required>
+			  <option value="General">General</option>
+			  <option value="Academic">Academic</option>
+			  <option value="Religious">Religious</option>
+			  <option value="Work">Work</option>
+			  <option value="Home">Home</option>
+			  <option value="Activity">Activity</option>
+			</select>
+		  </div>
+		  <label class="date-input-label" for="date-input">End Date(optional)</label>
+		  <input id="date-input" type="datetime-local">
+		  <input type="email" placeholder="Collaborator's email address" required>
+		  <input class="addBtn" type="submit" value="Add">
+		</form>
+  
+	  </div>
 </body>
 <script>
 	const now = new Date();

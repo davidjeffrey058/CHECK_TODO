@@ -7,6 +7,7 @@
   <title>Check Todo</title>
   <link rel="stylesheet" type="text/css" href="styles/nav.css">
   <link rel="stylesheet" href="styles/taskLayout.css">
+  <link rel="stylesheet" href="styles/collab.css">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -33,6 +34,7 @@
   <script src="Scripts/mainFirebase.js"></script>
   <script src="Scripts/mainLayout.js"></script>
   <script src="Scripts/motivation.js"></script>
+  <script src="Scripts/collab.js"></script>
   <style>
     .important-list,
     .category-list {
@@ -49,7 +51,7 @@
       border-radius: 10px;
     }
 
-    .important-list h3 {
+    .important-list h3, .the-container h3{
       color: white;
       text-align: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -80,7 +82,7 @@
       <li><a>Academic</a></li>
       <li><a>Religious</a></li>
       <li><a>Work</a></li>
-      <li><a>Home</a></li>
+      <!-- <li><a>Home</a></li> -->
       <li><a>Activity</a></li>
     </ul>
     <a>Collaborations</a>
@@ -106,7 +108,7 @@
             <option value="Academic">Academic</option>
             <option value="Religious">Religious</option>
             <option value="Work">Work</option>
-            <option value="Home">Home</option>
+            <!-- <option value="Home">Home</option> -->
             <option value="Activity">Activity</option>
           </select>
         </div>
@@ -124,7 +126,7 @@
       </div>
     </div>
 
-    <!-- The Quotes of the day section -->
+  <!-- The Quotes of the day section -->  
     <div class="motivation">
       <h3>Quotes of The Day</h3>
       <div class="quote-container">
@@ -156,8 +158,8 @@
   <!-- The category section -->
   <div class="category-list">
     <div class="the-container">
-      <h3>Important Tasks</h3>
-      <div class="important-container">
+      <h3 class="category-title">Category</h3>
+      <div class="category-container">
 
       </div>
     </div>
@@ -179,5 +181,21 @@
   </div>
 </body>
 <script src="./Scripts/navController.js"></script>
+<!-- <script>
+  const anchors = document.querySelectorAll('.submenu a');
 
+// add an event listener to each anchor element
+anchors.forEach(anchor => {
+  anchor.addEventListener('click', (event) => {
+    // prevent the default behavior of the link
+    event.preventDefault();
+
+    // get the text content of the clicked link
+    const name = anchor.textContent;
+
+    // display a message to the user with the clicked name
+    alert(`You clicked on ${name}`);
+  });
+});
+</script> -->
 </html>

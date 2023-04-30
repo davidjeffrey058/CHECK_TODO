@@ -214,3 +214,10 @@ input{
   margin-left: 200px;
   grid-template-columns: 1fr 1fr;
 }
+.error-message{
+  text-align: center;
+  color: #818181;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+}

@@ -10,9 +10,11 @@ const setUpTasksLayout = (data, email) => {
         });
     });
 
+    submenu(items);
+
     document.querySelector('.theContainer').innerHTML = todoLayout(items, "active");
     document.querySelector('.doneContainer').innerHTML = todoLayout(items, "completed", 0);
-    document.querySelector(".collab").innerHTML = todoLayout(items);
+    // document.querySelector(".collab").innerHTML = todoLayout(items);
 
     //Copying the important items into the important list
     importantItems = items.filter(function (obj) {
@@ -67,23 +69,24 @@ function createEventListenersImportant(Email) {
 }
 
 //Function that fires when a checkbox is clicked
-function markCompleted(id, e) {
-    let item = db.collection(e).doc(id);
-    item.get().then(function (doc) {
-        if (doc.exists) {
-            let status = doc.data().status;
-            if (status == "active") {
-                item.update({
-                    status: "completed"
-                })
-            } else if (status == "completed") {
-                item.update({
-                    status: "active"
-                });
-                document.querySelector("#done").style.display = "none";
+function markCompleted(id, e,) {
+    
+        let item = db.collection(e).doc(id);
+        item.get().then(function (doc) {
+            if (doc.exists) {
+                let status = doc.data().status;
+                if (status == "active") {
+                    item.update({
+                        status: "completed"
+                    })
+                } else if (status == "completed") {
+                    item.update({
+                        status: "active"
+                    });
+                    document.querySelector("#done").style.display = "none";
+                }
             }
-        }
-    });
+        });
 }
 
 //Function that deletes a task
@@ -147,7 +150,7 @@ function todoLayout(items, status, num) {
      `;
             container += li;
         });
-    }else{
+    } else {
         items.forEach(docs => {
             if (docs.status == status) {
                 const li = `
@@ -159,7 +162,7 @@ function todoLayout(items, status, num) {
                 <p class="task_name ${docs.status == "completed" ? "checked" : ""}">${docs.text}</p>
                 <div>
                     <label class="task_category">${docs.category}</label> 
-                    <label title= "Ends in: ${formatedDate(docs.endDate)}" class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.createdDate, docs.endDate)}</i></label>
+                    <label title= "Ends in: ${formatedDate(docs.endDate)}" class="task_endDate ${docs.endDate == "" ? "empty" : ""}"><i>Due in: ${timeLeft(docs.endDate)}</i></label>
                 </div>           
             </div>
           <div class="star-container ${docs.important == true ? "important" : ""}" data-id="${docs.id}" title="Mark as important">
@@ -171,7 +174,7 @@ function todoLayout(items, status, num) {
         </div>
     `;
                 container += li;
-                if(status == "completed"){
+                if (status == "completed") {
                     document.querySelector("#done").style.display = "block";
                 }
             }
@@ -212,4 +215,54 @@ function convertTimeLeft(milliseconds) {
     }
 
     return result;
+}
+function formatedDate(date) {
+    return Date(date);
+}
+
+function submenu(items){
+    const anchors = document.querySelectorAll('.submenu a');
+
+  // add an event listener to each anchor element
+  anchors.forEach(anchor => {
+    anchor.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      // get the text content of the clicked link
+      const name = anchor.textContent;
+
+      switch(name){
+        case "General":
+            setCategory(name, items);
+        break;
+        case "Academic":
+            setCategory(name, items);
+        break;
+        case "Religious":
+            setCategory(name, items);
+        break;
+        case "Work":
+            setCategory(name, items);
+        break;
+        case "Activity":
+            setCategory(name, items);
+        break;
+      }
+    });
+  });
+}
+
+function setCategory(value, items){
+    var category = [];
+
+    category = items.filter(function (obj) {
+        return obj.category === value;
+    });
+    var catContainer = document.querySelector(".category-container");
+    if(category.length > 0){
+        catContainer.innerHTML = todoLayout(category, null);
+    }else{
+        catContainer.innerHTML = `<h2 class="error-message">There is no ${value} task   </h2>`;
+    }
+    document.querySelector(".category-title").innerHTML = value;
 }

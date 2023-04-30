@@ -27,7 +27,10 @@ links.forEach(function (link) {
         break;
       case "Category":
         document.querySelector(".submenu").style.display = "block";
-
+        document.querySelector(".main").style.display = "none";
+        document.querySelector(".important-list").style.display = "none";
+        document.querySelector(".category-list").style.display = "block";
+        document.querySelector(".collaborations").style.display = "none";
         break;
       case "Collaborations":
         document.querySelector(".main").style.display = "none";
