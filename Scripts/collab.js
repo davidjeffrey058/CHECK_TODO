@@ -21,6 +21,8 @@ const setCollaborating = (data) => {
         });
     });
     document.querySelector(".collabTask").innerHTML = collabTaskLayout(collaborating, false);
+    collabCheckboxEventListener();
+    collabEventListenersDelete();
 }
 
 function collabTaskLayout(array, isCollab) {
@@ -41,7 +43,7 @@ function collabTaskLayout(array, isCollab) {
             </div>           
             <label class="task_category" style="margin-top: 10px"><b>${isCollab ? "Collaborator" : "Author"}:</b> ${isCollab ? docs.collaborator : docs.author}</label>
         </div>
-      <div title="Delete task" data-id="${docs.id}" class="delete-text ${docs.status == "completed" ? "checked" : ""}">
+      <div title="Delete task" data-id="${docs.id}" class="collab-delete-text ${docs.status == "completed" ? "checked" : ""}">
         <i class="fa-regular fa-trash-can fa-bounce fa-xl" style="color: #ff0000;"></i>
       </div>
     </div>
@@ -53,33 +55,53 @@ function collabTaskLayout(array, isCollab) {
 }
 
 //Creates an eventListener for every single collaboration checkbox
-function collabCheckboxEventListener(Email) {
+function collabCheckboxEventListener() {
     var todoCheckMarks = document.querySelectorAll('.collab_container .collab-check-mark');
 
     todoCheckMarks.forEach((checkMark) => {
         checkMark.addEventListener("click", function () {
-            collabCompleted(checkMark.dataset.id, Email);
+            collabCompleted(checkMark.dataset.id);
         });
     });
 }
 
-function collabCompleted(id, e,) {
+//Creates an eventListener for every single collaboration delete
+function collabEventListenersDelete() {
+    var todoCheckMarks = document.querySelectorAll('.item_container .collab-delete-text');
 
-    let item = db.doc("/collaboration/JMEpR1X3jzDejR7FWeqm/task/bA0Iw6JhgwxRZGFo6IFn");
+    todoCheckMarks.forEach((checkMark) => {
+        checkMark.addEventListener("click", function () {
+            deleteCollabTask(checkMark.dataset.id);
+        });
+    });
+}
+
+//Mark a collab task as completed
+function collabCompleted(id) {
+
+    let item = db.collection("collaboration").doc(id);
     item.get().then(function (doc) {
         if (doc.exists) {
-            let status = doc.data().tasks[id].status;
-            const value = "tasks." + id + ".status";
+            let status = doc.data().status;
             if (status == "active") {
                 item.update({
-                    [value]: "completed"
+                    status: "completed"
                 })
             } else if (status == "completed") {
                 item.update({
-                    [value]: "active"
+                    status: "active"
                 });
-                // document.querySelector("#done").style.display = "none";
+                document.querySelector("#done").style.display = "none";
             }
         }
     });
+}
+
+//Function that deletes a task
+function deleteCollabTask(id) {
+    let item = db.collection("collaboration").doc(id);
+    item.delete().catch(error => {
+        alert("Error deleting document: ", error);
+    });
+    document.querySelector("#done").style.display = "none";
 }
