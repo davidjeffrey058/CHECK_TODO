@@ -1,0 +1,95 @@
+.item_container {
+    display: flex;
+    width: auto;
+    /* max-width: 500px; */
+    margin-bottom: 10px;
+    padding: 15px 5px;
+    border-radius: 5px;
+    background-color: var(--darker-grey);
+  }
+  .task_name {
+    margin: 0px;
+    margin-bottom: 10px;
+    display: inline;
+    font-size: 13px;
+    color: rgb(224, 224, 224);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .task_name.checked {
+    text-decoration: line-through;
+    color: rgb(106, 105, 105);
+  }
+  .check-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid hsl(237, 14%, 26%);
+    /* transition: all 0.25s; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    align-self: center;
+  }
+  
+  /* .check-mark:hover {
+    border-color: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+    background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+  } */
+  
+  .check-mark.checked {
+    background-color: pink;
+    background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+  }
+  
+  .star-container{
+    margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
+    align-self: center;
+  }
+  .fa-solid{
+    color: #adaeb0;
+  }
+  .star-container.important .fa-solid{
+    color: yellow;
+  }
+  .delete-text{
+    /* margin-left: auto; */
+    color: red;
+    font-size: 12px;
+    margin-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: none;
+    cursor: pointer;
+    align-self: center;
+  }
+  .delete-text.checked{
+    display: block;
+  }  
+  .text-container{
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .text-container div{
+    display: flex;
+  }
+  .task_category{
+    font-size: 13px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #747475;
+    align-self: center;
+}
+.task_endDate{
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 20px;
+  align-self: center;
+  cursor: pointer;
+}
+.task_endDate.empty{
+  display: none;
+}

@@ -1,0 +1,128 @@
+/* Popup container - can be customized */
+.regPopup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+/* Popup content - can be customized */
+.registerPopup-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 40px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    /* text-align: center; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Close button - can be customized */
+.registerclose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.registerPopup-content h2 {
+    display: inline;
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-input-field {
+    border-bottom: 2px solid black;
+    display: flex;
+}
+
+.register-input-field input {
+    border: none;
+    margin-top: 40px;
+    padding-bottom: 10px;
+    width: 400px;
+}
+.register-input-field input:focus{
+    outline: none;
+    border: none;
+}
+.register-input-field input:active {
+    border: none;
+}
+
+.register-input-field input::placeholder {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.register-input-field img {
+    margin-left: auto;
+    align-self: last baseline;
+    padding-bottom: 5px;
+}
+
+.remember {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.register-Btn {
+    border: none;
+    width: 300px;
+    padding: 15px 0;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    margin: 20px auto 0 auto;
+    background-color: rgb(37, 37, 165);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.register-Btn:hover{
+    background-color: rgb(142, 142, 243)
+}
+.already{
+    margin: 20px 0px;
+    justify-content: center;
+    display: flex;
+}
+.links{
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    padding-left: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.spinner1{
+    display: none;
+    height: 20px;
+    width: 20px;
+    border: 3px solid;
+    border-color: black transparent;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: spin 1.5s ease infinite;
+    margin: 10px auto;
+  }
+  @keyframes spin{
+    to{
+      transform: rotate(360deg);
+    }
+  }

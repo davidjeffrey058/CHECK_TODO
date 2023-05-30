@@ -1,0 +1,223 @@
+/* Color palette */
+:root {
+  --nav-black: #242424;
+  --darker-grey: #3c3b3b;
+  --tan: #d5b290;
+  --timber-wolf: #dcd9d4
+}
+
+body {
+  background-image: url("../images/background_blue.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+label{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  color: white;
+}
+input{
+  background-color: var(--nav-black);
+  border: 1px solid var(--darker-grey);
+  color: white;
+  height: 35px;
+}
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--nav-black);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style for the links inside the side navigation bar */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.sidenav a:hover {
+  background-color: #3c3b3b;
+}
+
+/* Style for the active link */
+.sidenav a.active {
+  color: #f1f1f1;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: #3c3b3b;
+}
+
+/* Style for the main content */
+.main {
+  margin-left: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.container_title {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 10px;
+}
+
+.task_container {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10px;
+  /* box-shadow: 0px 1px 3px #989595; */
+  margin: 20px 10px;
+  background-color: var(--nav-black);
+  height: min-content;
+}
+
+#profile_image {
+  width: 50px;
+  height: 50px;
+}
+
+.profile_part {
+  display: flex;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.profile_part div {
+  border: 2px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile_part p {
+  color: white;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left: 10px;
+  cursor:default;
+}
+.submenu{
+  list-style-type: none;
+  display: none;
+}
+
+#task_input, #collab-task_input {
+  width: 97%;
+  padding-left: 5px;
+}
+
+.category_part {
+  display: inline-flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.category_part label {
+  margin-right: 10px;
+}
+.category_part select, .collab-category_part select {
+  background-color: var(--nav-black);
+  padding: 5px 0px;
+  color: #818181;
+  border: 1px solid var(--darker-grey);
+  border-radius: 10px;
+}
+.date-input-label{
+  margin: 10px 10px 0 10px;
+}
+.addBtn{
+  margin: 10px 0 0 10px;
+  padding: 0 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.addBtn:hover{
+  background-color: #504f4f;
+}
+
+/* Layout for the quotes of the day section */
+.motivation {
+  background-color: var(--nav-black);
+  margin: 20px 10px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 0px 20px 20px 20px;
+  border-radius: 20px;
+}
+
+.motivation h3 {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+.quote{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 5px;
+  color: rgb(223, 223, 223);
+  font-size: 15px;
+}
+.author{
+  color: grey;
+  margin: 5px;
+  text-align: right;
+}
+.refresh{
+  display: flex;
+  color: white;
+  margin-top: 20px;
+  background-color: var(--darker-grey);
+  width: fit-content;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  align-items: center;
+}
+.refresh:hover{
+  background-color: #504f4f;
+}
+
+/* Code for the spinner inside the quotes section */
+.spinner{
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 2px solid;
+  border-color: white transparent;
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: spin 1.5s ease infinite;
+}
+@keyframes spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+.collaborations{
+  display: none;
+  margin-left: 200px;
+  grid-template-columns: 1fr 1fr;
+}
+.error-message{
+  text-align: center;
+  color: #818181;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Todo</title>
+  <link rel="stylesheet" type="text/css" href="styles/nav.css">
+  <link rel="stylesheet" href="styles/taskLayout.css">
+  <link rel="stylesheet" href="styles/collab.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://kit.fontawesome.com/d01cb2edf1.js" crossorigin="anonymous"></script>
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCS8Goa_OXK2fl3mykZr_EeDSeEOOil1X8",
+      authDomain: "group-todo-aafed.firebaseapp.com",
+      databaseURL: "https://group-todo-aafed-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "group-todo-aafed",
+      storageBucket: "group-todo-aafed.appspot.com",
+      messagingSenderId: "449574472630",
+      appId: "1:449574472630:web:6c2e027a02a6a023ce4f17"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    //make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+  <script src="Scripts/main.js"></script>
+  <script src="Scripts/mainLayout.js"></script>
+  <script src="Scripts/motivation.js"></script>
+  <script src="Scripts/collab.js"></script>
+  <style>
+    .important-list,
+    .category-list {
+      margin-left: 200px;
+      display: none;
+      background-color: transparent;
+    }
+
+    .the-container {
+      background-color: #242424;
+      padding: 20px;
+      width: 700px;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+    .important-list h3,
+    .the-container h3,
+    .task_container h3 {
+      color: white;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: bold;
+    }
+
+    #done {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Side Navigation Bar -->
+  <div class="sidenav">
+    <div class="profile_part">
+      <div>
+        <img id="profile_image" src="./images/person.png">
+      </div>
+      <p class="displayName"></p>
+    </div>
+    <a class="active">Home</a>
+    <a>Important</a>
+    <a>Category</a>
+    <ul class="submenu">
+      <li><a>General</a></li>
+      <li><a>Academic</a></li>
+      <li><a>Religious</a></li>
+      <li><a>Work</a></li>
+      <!-- <li><a>Home</a></li> -->
+      <li><a>Activity</a></li>
+    </ul>
+    <a>Collaborations</a>
+    <a style="margin-top: 30px;" id="logoutBtn" onclick="logout(event)">Log Out</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- A container holding a number of tasks -->
+    <div class="task_container">
+      <h3 class="container_title">Tasks</h3>
+      <div class="theContainer">
+        <!-- This is where each task will be displayed from the database -->
+      </div>
+
+      <form action="" class="addTask" onsubmit="addItem(event)">
+        <input type="text" id="task_input" placeholder="+   Add task" required>
+        <div class="category_part">
+          <label for="">Category</label>
+          <select id="categorySelect" required>
+            <option value="General">General</option>
+            <option value="Academic">Academic</option>
+            <option value="Religious">Religious</option>
+            <option value="Work">Work</option>
+            <!-- <option value="Home">Home</option> -->
+            <option value="Activity">Activity</option>
+          </select>
+        </div>
+        <label class="date-input-label" for="date-input">End Date(optional)</label>
+        <input id="date-input" type="datetime-local">
+        <input class="addBtn" type="submit" value="Add">
+      </form>
+
+    </div>
+
+    <div id="done" class="task_container">
+      <h3 class="container_title">Done</h3>
+      <div class="doneContainer">
+        <!-- This is where each task will be displayed from the database -->
+      </div>
+    </div>
+
+    <!-- The Quotes of the day section -->
+    <div class="motivation">
+      <h3>Quotes of The Day</h3>
+      <div class="quote-container">
+        <!-- <p class="quote">This is where the quote of the day will be displayed</p>
+        <p class="author">Author: <i>David Jeffrey</i></p> -->
+      </div>
+      <div class="refresh" onclick="getQuote(1)">
+        <!-- <i class="fa-solid fa-rotate-right"></i> -->
+        <div class="spinner"></div>
+        Refresh
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- The important section -->
+  <div class="important-list">
+    <div class="the-container">
+      <h3>Important Tasks</h3>
+      <div class="important-container">
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- The category section -->
+  <div class="category-list">
+    <div class="the-container">
+      <h3 class="category-title">Category</h3>
+      <div class="category-container">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- The collaborations section -->
+  <div class="collaborations">
+      <div class="task_container">
+        <h3>My collaborative Tasks</h3>
+        <div class="collab">
+
+          <!-- This is where each task will be displayed from the database -->
+        </div>
+        <form action="" class="collab-check-form" onsubmit="checkEmailExists(event)">
+          <input type="text" id="collab-task_input" placeholder="+   Add task" required>
+          <div class="category_part">
+            <label for="">Category</label>
+            <select id="collab-categorySelect" required>
+              <option value="General">General</option>
+              <option value="Academic">Academic</option>
+              <option value="Religious">Religious</option>
+              <option value="Work">Work</option>
+              <option value="Activity">Activity</option>
+            </select>
+          </div>
+          <label class="collab-date-input-label" for="collab-date-input">End Date(optional)</label>
+          <input id="collab-date-input" type="datetime-local">
+          <input class="check-email" type="email" placeholder="Add collaborators email" required>
+          <input class="collab-addBtn" type="submit" value="Add">
+        </form>
+      </div>
+
+      <div class="task_container">
+        <h3>Collaborating Tasks</h3>
+        <div class="collabTask">
+
+          <!-- This is where each task will be displayed from the database -->
+        </div>
+      </div>
+    
+  </div>
+</body>
+<script src="./Scripts/navController.js"></script>
+
+</html>
